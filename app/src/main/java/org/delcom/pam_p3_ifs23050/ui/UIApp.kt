@@ -15,9 +15,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import org.delcom.pam_p3_ifs23050.helper.ConstHelper
 import org.delcom.pam_p3_ifs23050.ui.screens.HomeScreen
-import org.delcom.pam_p3_ifs23050.ui.screens.PlantsDetailScreen
-import org.delcom.pam_p3_ifs23050.ui.screens.PlantsScreen
 import org.delcom.pam_p3_ifs23050.ui.screens.ProfileScreen
+import org.delcom.pam_p3_ifs23050.ui.screens.ZodiacDetailScreen
+import org.delcom.pam_p3_ifs23050.ui.screens.ZodiacScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -31,50 +31,35 @@ fun UIApp(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFFF7F8FA))
-
         ) {
             // Home
-            composable(
-                route = ConstHelper.RouteNames.Home.path,
-            ) { _ ->
-                HomeScreen(
-                    navController = navController,
-                )
+            composable(route = ConstHelper.RouteNames.Home.path) { _ ->
+                HomeScreen(navController = navController)
             }
 
             // Profile
-            composable(
-                route = ConstHelper.RouteNames.Profile.path,
-            ) { _ ->
-                ProfileScreen(
-                    navController = navController,
-                )
+            composable(route = ConstHelper.RouteNames.Profile.path) { _ ->
+                ProfileScreen(navController = navController)
             }
 
-            // Plants
-            composable(
-                route = ConstHelper.RouteNames.Plants.path,
-            ) { _ ->
-                PlantsScreen(
-                    navController = navController,
-                )
+            // Zodiac
+            composable(route = ConstHelper.RouteNames.Zodiac.path) { _ ->
+                ZodiacScreen(navController = navController)
             }
 
-            // Plants Detail
+            // Zodiac Detail
             composable(
-                route = ConstHelper.RouteNames.PlantsDetail.path,
+                route = ConstHelper.RouteNames.ZodiacDetail.path,
                 arguments = listOf(
                     navArgument("name") { type = NavType.StringType },
                 )
             ) { backStackEntry ->
-                val plantName = backStackEntry.arguments?.getString("name") ?: ""
-
-                PlantsDetailScreen(
+                val zodiacName = backStackEntry.arguments?.getString("name") ?: ""
+                ZodiacDetailScreen(
                     navController = navController,
-                    plantName = plantName
+                    zodiacName = zodiacName
                 )
             }
         }
     }
-
 }

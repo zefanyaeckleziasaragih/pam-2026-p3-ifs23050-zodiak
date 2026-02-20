@@ -3,77 +3,115 @@ package org.delcom.pam_p3_ifs23050.data
 import org.delcom.pam_p3_ifs23050.R
 
 object DummyData {
-    fun getPlantsData(): List<PlantData> {
+    fun getZodiacData(): List<ZodiacData> {
         return listOf(
-            PlantData(
-                nama = "Bawang Merah",
-                gambar = R.drawable.img_bawang_merah,
-                deskripsi = "Bawang merah adalah umbi yang banyak digunakan sebagai bumbu dapur dan memiliki aroma kuat.",
-                manfaat = "Membantu meningkatkan daya tahan tubuh, mengurangi peradangan, dan mendukung kesehatan jantung.",
-                efekSamping = "Dapat menyebabkan iritasi mata dan gangguan pencernaan jika dikonsumsi berlebihan."
+            ZodiacData(
+                nama = "Aries",
+                gambar = R.drawable.img_aries,
+                periode = "21 Maret – 19 April",
+                elemen = "Api 🔥",
+                deskripsi = "Aries adalah zodiak pertama dalam astrologi, dilambangkan dengan domba jantan. Mereka dikenal sebagai pionir yang penuh semangat dan keberanian.",
+                sifat = "Berani, energik, antusias, percaya diri, dan terkadang impulsif.",
+                kecocokan = "Leo, Sagitarius, Gemini"
             ),
-            PlantData(
-                nama = "Bawang Putih",
-                gambar = R.drawable.img_bawang_putih,
-                deskripsi = "Bawang putih merupakan tanaman umbi dengan aroma khas yang sering digunakan sebagai bumbu dasar.",
-                manfaat = "Mendukung kesehatan jantung, membantu meningkatkan imunitas, dan memiliki efek antibakteri alami.",
-                efekSamping = "Dapat menyebabkan bau mulut, mulas, dan iritasi lambung ketika konsumsi berlebih."
+            ZodiacData(
+                nama = "Taurus",
+                gambar = R.drawable.img_taurus,
+                periode = "20 April – 20 Mei",
+                elemen = "Tanah 🌍",
+                deskripsi = "Taurus dilambangkan dengan banteng dan dikenal sebagai zodiak yang stabil, tekun, dan sangat menghargai kenyamanan serta keindahan.",
+                sifat = "Sabar, dapat diandalkan, setia, keras kepala, dan menyukai kemewahan.",
+                kecocokan = "Virgo, Capricorn, Cancer"
             ),
-            PlantData(
-                nama = "Brokoli",
-                gambar = R.drawable.img_brokoli,
-                deskripsi = "Brokoli adalah sayuran hijau yang kaya vitamin, mineral, dan serat.",
-                manfaat = "Membantu detoksifikasi, menjaga kesehatan mata, dan mendukung sistem kekebalan tubuh.",
-                efekSamping = "Dapat menyebabkan kembung dan gas pada beberapa orang."
+            ZodiacData(
+                nama = "Gemini",
+                gambar = R.drawable.img_gemini,
+                periode = "21 Mei – 20 Juni",
+                elemen = "Udara 💨",
+                deskripsi = "Gemini dilambangkan dengan kembar dan terkenal memiliki dua sisi kepribadian. Mereka adalah komunikator ulung yang penuh rasa ingin tahu.",
+                sifat = "Cerdas, adaptif, komunikatif, mudah bosan, dan suka bersosialisasi.",
+                kecocokan = "Libra, Aquarius, Aries"
             ),
-            PlantData(
-                nama = "Cabai",
-                gambar = R.drawable.img_cabai,
-                deskripsi = "Cabai adalah buah pedas yang sering digunakan untuk menambah rasa pada makanan.",
-                manfaat = "Meningkatkan metabolisme, membantu peredaran darah, dan kaya vitamin C.",
-                efekSamping = "Dapat menyebabkan iritasi lambung, heartburn, dan diare jika terlalu banyak."
+            ZodiacData(
+                nama = "Cancer",
+                gambar = R.drawable.img_cancer,
+                periode = "21 Juni – 22 Juli",
+                elemen = "Air 💧",
+                deskripsi = "Cancer dilambangkan dengan kepiting dan dikenal sangat intuitif dan emosional. Mereka sangat menjaga hubungan keluarga dan orang-orang terdekat.",
+                sifat = "Penyayang, intuitif, protektif, sensitif, dan mudah tersinggung.",
+                kecocokan = "Scorpio, Pisces, Taurus"
             ),
-            PlantData(
-                nama = "Kentang",
-                gambar = R.drawable.img_kentang,
-                deskripsi = "Kentang adalah umbi yang menjadi sumber karbohidrat dan energi.",
-                manfaat = "Memberikan energi, mendukung pencernaan, dan kaya vitamin B serta kalium.",
-                efekSamping = "Jika digoreng dapat meningkatkan kalori dan risiko kenaikan berat badan."
+            ZodiacData(
+                nama = "Leo",
+                gambar = R.drawable.img_leo,
+                periode = "23 Juli – 22 Agustus",
+                elemen = "Api 🔥",
+                deskripsi = "Leo dilambangkan dengan singa dan merupakan sosok yang karismatik, suka menjadi pusat perhatian, dan memiliki jiwa pemimpin yang kuat.",
+                sifat = "Percaya diri, dermawan, kreatif, dominan, dan dramatis.",
+                kecocokan = "Aries, Sagitarius, Gemini"
             ),
-            PlantData(
-                nama = "Kol",
-                gambar = R.drawable.img_kol,
-                deskripsi = "Kol adalah sayuran daun yang banyak digunakan dalam masakan Asia.",
-                manfaat = "Membantu pencernaan, kaya vitamin C dan K, serta menjaga kesehatan kulit.",
-                efekSamping = "Dapat menyebabkan gas dan perut kembung bila dikonsumsi berlebihan."
+            ZodiacData(
+                nama = "Virgo",
+                gambar = R.drawable.img_virgo,
+                periode = "23 Agustus – 22 September",
+                elemen = "Tanah 🌍",
+                deskripsi = "Virgo dilambangkan dengan gadis perawan dan dikenal sangat analitis, perfeksionis, serta memiliki perhatian tinggi terhadap detail.",
+                sifat = "Analitis, pekerja keras, praktis, kritis, dan sangat terorganisir.",
+                kecocokan = "Taurus, Capricorn, Cancer"
             ),
-            PlantData(
-                nama = "Terong",
-                gambar = R.drawable.img_terong,
-                deskripsi = "Terong adalah sayuran berwarna ungu atau hijau dengan tekstur lembut.",
-                manfaat = "Membantu mengontrol kadar gula darah, menjaga kesehatan jantung, dan kaya antioksidan.",
-                efekSamping = "Pada beberapa orang dapat menyebabkan alergi ringan atau gangguan pencernaan."
+            ZodiacData(
+                nama = "Libra",
+                gambar = R.drawable.img_libra,
+                periode = "23 September – 22 Oktober",
+                elemen = "Udara 💨",
+                deskripsi = "Libra dilambangkan dengan timbangan dan mencerminkan keseimbangan, keadilan, serta harmoni. Mereka sangat menghargai hubungan yang serasi.",
+                sifat = "Diplomatis, adil, sosial, menghindari konflik, dan indecisive.",
+                kecocokan = "Gemini, Aquarius, Leo"
             ),
-            PlantData(
-                nama = "Mentimun",
-                gambar = R.drawable.img_mentimun,
-                deskripsi = "Mentimun adalah buah yang kaya air dan sering digunakan sebagai lalapan atau bahan salad.",
-                manfaat = "Membantu hidrasi, menjaga kesehatan kulit, dan mendukung pencernaan.",
-                efekSamping = "Bila terlalu banyak dapat menyebabkan sering buang air kecil atau kembung."
+            ZodiacData(
+                nama = "Scorpio",
+                gambar = R.drawable.img_scorpio,
+                periode = "23 Oktober – 21 November",
+                elemen = "Air 💧",
+                deskripsi = "Scorpio dilambangkan dengan kalajengking dan dikenal misterius, intens, dan memiliki tekad yang sangat kuat dalam setiap aspek kehidupan.",
+                sifat = "Intens, setia, berani, cemburu, dan penuh misteri.",
+                kecocokan = "Cancer, Pisces, Virgo"
             ),
-            PlantData(
-                nama = "Tomat",
-                gambar = R.drawable.img_tomat,
-                deskripsi = "Tomat adalah buah yang banyak digunakan dalam masakan dan kaya antioksidan.",
-                manfaat = "Mendukung kesehatan mata, menjaga kesehatan jantung, dan baik untuk kulit.",
-                efekSamping = "Dapat menyebabkan asam lambung meningkat pada beberapa orang."
+            ZodiacData(
+                nama = "Sagitarius",
+                gambar = R.drawable.img_sagitarius,
+                periode = "22 November – 21 Desember",
+                elemen = "Api 🔥",
+                deskripsi = "Sagitarius dilambangkan dengan pemanah dan dikenal sebagai jiwa petualang yang bebas, optimistis, serta haus akan pengetahuan dan pengalaman baru.",
+                sifat = "Optimis, petualang, jujur, tidak sabar, dan suka kebebasan.",
+                kecocokan = "Aries, Leo, Aquarius"
             ),
-            PlantData(
-                nama = "Wortel",
-                gambar = R.drawable.img_wortel,
-                deskripsi = "Wortel adalah sayuran berwarna oranye yang kaya beta-karoten.",
-                manfaat = "Membantu menjaga kesehatan mata, meningkatkan imunitas, dan baik untuk kulit.",
-                efekSamping = "Konsumsi berlebihan dapat membuat kulit agak kekuningan (karotenemia)."
+            ZodiacData(
+                nama = "Capricorn",
+                gambar = R.drawable.img_capricorn,
+                periode = "22 Desember – 19 Januari",
+                elemen = "Tanah 🌍",
+                deskripsi = "Capricorn dilambangkan dengan kambing laut dan dikenal sebagai zodiak yang ambisius, disiplin, dan sangat bertanggung jawab terhadap tujuan hidupnya.",
+                sifat = "Ambisius, disiplin, realistis, keras kepala, dan berorientasi pada tujuan.",
+                kecocokan = "Taurus, Virgo, Scorpio"
+            ),
+            ZodiacData(
+                nama = "Aquarius",
+                gambar = R.drawable.img_aquarius,
+                periode = "20 Januari – 18 Februari",
+                elemen = "Udara 💨",
+                deskripsi = "Aquarius dilambangkan dengan pembawa air dan dikenal sebagai pemikir inovatif yang humanis, unik, dan sering berada di luar kebiasaan umum.",
+                sifat = "Inovatif, independen, humanis, eksentrik, dan visioner.",
+                kecocokan = "Gemini, Libra, Sagitarius"
+            ),
+            ZodiacData(
+                nama = "Pisces",
+                gambar = R.drawable.img_pisces,
+                periode = "19 Februari – 20 Maret",
+                elemen = "Air 💧",
+                deskripsi = "Pisces dilambangkan dengan dua ikan dan dikenal sebagai zodiak yang paling empatik, imajinatif, dan peka terhadap perasaan orang lain.",
+                sifat = "Empatik, imajinatif, sensitif, mudah terpengaruh, dan artistik.",
+                kecocokan = "Cancer, Scorpio, Taurus"
             ),
         )
     }

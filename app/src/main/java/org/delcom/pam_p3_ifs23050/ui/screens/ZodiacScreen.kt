@@ -34,26 +34,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import org.delcom.pam_p3_ifs23050.data.DummyData
-import org.delcom.pam_p3_ifs23050.data.PlantData
+import org.delcom.pam_p3_ifs23050.data.ZodiacData
 import org.delcom.pam_p3_ifs23050.helper.RouteHelper
 import org.delcom.pam_p3_ifs23050.ui.components.BottomNavComponent
 import org.delcom.pam_p3_ifs23050.ui.components.TopAppBarComponent
 import org.delcom.pam_p3_ifs23050.ui.theme.DelcomTheme
 
 @Composable
-fun PlantsScreen(
+fun ZodiacScreen(
     navController: NavHostController,
 ) {
-    // Muat data
-    var plants by remember { mutableStateOf(DummyData.getPlantsData()) }
+    var zodiacs by remember { mutableStateOf(DummyData.getZodiacData()) }
     var searchQuery by remember { mutableStateOf("") }
 
-    fun onOpen(plantName: String) {
+    fun onOpen(zodiacName: String) {
         RouteHelper.to(
             navController = navController,
-            destination = "plants/${plantName}"
+            destination = "zodiac/${zodiacName}"
         )
     }
 
@@ -62,39 +62,29 @@ fun PlantsScreen(
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Top App Bar
         TopAppBarComponent(
             navController = navController,
-            title = "Plants", showBackButton = false,
+            title = "Zodiak ✨",
+            showBackButton = false,
             withSearch = true,
             searchQuery = searchQuery,
             onSearchQueryChange = { query ->
                 searchQuery = query
-                plants = DummyData.getPlantsData().filter {
-                    it.nama
-                        .lowercase()
-                        .contains(query.lowercase())
+                zodiacs = DummyData.getZodiacData().filter {
+                    it.nama.lowercase().contains(query.lowercase())
                 }
             }
         )
-        // Content
-        Box(
-            modifier = Modifier
-                .weight(1f)
-        ) {
-            PlantsUI(
-                plants = plants,
-                onOpen = ::onOpen
-            )
+        Box(modifier = Modifier.weight(1f)) {
+            ZodiacUI(zodiacs = zodiacs, onOpen = ::onOpen)
         }
-        // Bottom Nav
         BottomNavComponent(navController = navController)
     }
 }
 
 @Composable
-fun PlantsUI(
-    plants: List<PlantData>,
+fun ZodiacUI(
+    zodiacs: List<ZodiacData>,
     onOpen: (String) -> Unit
 ) {
     LazyColumn(
@@ -103,15 +93,12 @@ fun PlantsUI(
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        items(plants) { plant ->
-            PlantItemUI(
-                plant,
-                onOpen
-            )
+        items(zodiacs) { zodiac ->
+            ZodiacItemUI(zodiac, onOpen)
         }
     }
 
-    if(plants.isEmpty()){
+    if (zodiacs.isEmpty()) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -121,7 +108,7 @@ fun PlantsUI(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         ) {
             Text(
-                text = "Tidak ada data!",
+                text = "Zodiak tidak ditemukan!",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -133,17 +120,15 @@ fun PlantsUI(
 }
 
 @Composable
-fun PlantItemUI(
-    plant: PlantData,
+fun ZodiacItemUI(
+    zodiac: ZodiacData,
     onOpen: (String) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable {
-                onOpen(plant.nama)
-            },
+            .clickable { onOpen(zodiac.nama) },
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
@@ -151,11 +136,12 @@ fun PlantItemUI(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp)
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = plant.gambar),
-                contentDescription = plant.nama,
+                painter = painterResource(id = zodiac.gambar),
+                contentDescription = zodiac.nama,
                 modifier = Modifier
                     .size(70.dp)
                     .clip(MaterialTheme.shapes.medium),
@@ -164,20 +150,32 @@ fun PlantItemUI(
 
             Spacer(modifier = Modifier.width(12.dp))
 
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-            ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = zodiac.nama,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = zodiac.elemen,
+                        fontSize = 14.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(2.dp))
+
                 Text(
-                    text = plant.nama,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+                    text = zodiac.periode,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = plant.deskripsi,
+                    text = zodiac.deskripsi,
                     style = MaterialTheme.typography.bodyMedium,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -189,10 +187,10 @@ fun PlantItemUI(
 
 @Preview(showBackground = true, name = "Light Mode")
 @Composable
-fun PreviewPlantsUI() {
+fun PreviewZodiacUI() {
     DelcomTheme {
-        PlantsUI(
-            plants = DummyData.getPlantsData(),
+        ZodiacUI(
+            zodiacs = DummyData.getZodiacData(),
             onOpen = {}
         )
     }

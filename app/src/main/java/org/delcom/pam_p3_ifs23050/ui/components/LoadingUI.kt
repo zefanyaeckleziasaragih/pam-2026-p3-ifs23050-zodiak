@@ -45,10 +45,11 @@ fun RippleLoading(
     ) {
         // Center logo
         Image(
-            painter = painterResource(R.drawable.img_kol),
+            painter = painterResource(R.drawable.img_aries),
             contentDescription = "Logo",
             modifier = Modifier.size(imageSize)
         )
+
 
         // Create 3 ripple circles with different delays
         repeat(2) { index ->
