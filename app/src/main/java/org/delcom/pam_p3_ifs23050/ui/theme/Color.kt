@@ -1,92 +1,93 @@
-
 package org.delcom.pam_p3_ifs23050.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
 /* =========================
-   BRAND COLORS (PLANT THEME)
+   BRAND COLORS (ZODIAC THEME)
    ========================= */
-val PlantGreen = Color(0xFF2E7D32)      // Hijau natural untuk tanaman
-val PlantGreenLight = Color(0xFF4CAF50)  // Hijau lebih terang
-val PlantGreenDark = Color(0xFF1B5E20)   // Hijau lebih gelap
-val PlantAccent = Color(0xFF8BC34A)      // Hijau cerah sebagai aksen
+val ZodiacDeepBlue = Color(0xFF1A1A6E)       // Biru tua mistis
+val ZodiacMidBlue = Color(0xFF2D2DA8)        // Biru medium
+val ZodiacPurple = Color(0xFF6A0DAD)         // Ungu khas zodiak
+val ZodiacPurpleLight = Color(0xFF9B59B6)    // Ungu lebih terang
+val ZodiacPurpleSoft = Color(0xFFD7B8F3)     // Ungu pastel
+val ZodiacGold = Color(0xFFFFD700)           // Emas bintang
+val ZodiacGoldSoft = Color(0xFFFFEE99)       // Emas lembut
+val ZodiacStarBlue = Color(0xFF4FC3F7)       // Biru bintang
 
-val DelcomYellow = Color(0xFFFFC107)
-val DelcomYellowSoft = Color(0xFFFFE082)
 /* =========================
-   LIGHT THEME (PLANT THEME)
+   LIGHT THEME (ZODIAC)
    ========================= */
-val md_theme_light_primary = PlantGreen
+val md_theme_light_primary = ZodiacPurple
 val md_theme_light_onPrimary = Color.White
 
-val md_theme_light_primaryContainer = Color(0xFFC8E6C9)
-val md_theme_light_onPrimaryContainer = Color(0xFF002107)
+val md_theme_light_primaryContainer = Color(0xFFEDD9FF)
+val md_theme_light_onPrimaryContainer = Color(0xFF2D0057)
 
-val md_theme_light_secondary = DelcomYellow
-val md_theme_light_onSecondary = Color(0xFF2A1F00)
+val md_theme_light_secondary = ZodiacMidBlue
+val md_theme_light_onSecondary = Color.White
 
-val md_theme_light_secondaryContainer = DelcomYellowSoft
-val md_theme_light_onSecondaryContainer = Color(0xFF2A1F00)
+val md_theme_light_secondaryContainer = Color(0xFFD0D8FF)
+val md_theme_light_onSecondaryContainer = Color(0xFF000D5C)
 
-val md_theme_light_tertiary = PlantGreenDark
-val md_theme_light_onTertiary = Color.White
+val md_theme_light_tertiary = ZodiacGold
+val md_theme_light_onTertiary = Color(0xFF3A2900)
 
 val md_theme_light_error = Color(0xFFBA1A1A)
 val md_theme_light_onError = Color.White
 val md_theme_light_errorContainer = Color(0xFFFFDAD6)
 val md_theme_light_onErrorContainer = Color(0xFF410002)
 
-val md_theme_light_background = Color(0xFFF8FBF8)
-val md_theme_light_onBackground = Color(0xFF121212)
+val md_theme_light_background = Color(0xFFF7F4FF)
+val md_theme_light_onBackground = Color(0xFF1A1225)
 
-val md_theme_light_surface = Color(0xFFFAFFFA)
-val md_theme_light_onSurface = Color(0xFF121212)
+val md_theme_light_surface = Color(0xFFFDFAFF)
+val md_theme_light_onSurface = Color(0xFF1A1225)
 
-val md_theme_light_surfaceVariant = Color(0xFFE3EBE3)
-val md_theme_light_onSurfaceVariant = Color(0xFF444944)
+val md_theme_light_surfaceVariant = Color(0xFFE8DEFF)
+val md_theme_light_onSurfaceVariant = Color(0xFF4A4560)
 
-val md_theme_light_outline = Color(0xFF747C74)
-val md_theme_light_inverseOnSurface = Color(0xFFF1F1F1)
-val md_theme_light_inverseSurface = Color(0xFF1E1E1E)
-val md_theme_light_inversePrimary = PlantGreenDark
+val md_theme_light_outline = Color(0xFF7A7490)
+val md_theme_light_inverseOnSurface = Color(0xFFF3EEFF)
+val md_theme_light_inverseSurface = Color(0xFF2E2740)
+val md_theme_light_inversePrimary = ZodiacPurpleLight
 val md_theme_light_shadow = Color.Black
-val md_theme_light_surfaceTint = PlantGreen
+val md_theme_light_surfaceTint = ZodiacPurple
 
 /* =========================
-   DARK THEME (PLANT THEME)
+   DARK THEME (ZODIAC)
    ========================= */
-val md_theme_dark_primary = PlantGreenLight
-val md_theme_dark_onPrimary = Color.Black
+val md_theme_dark_primary = ZodiacPurpleLight
+val md_theme_dark_onPrimary = Color(0xFF2D0057)
 
-val md_theme_dark_primaryContainer = Color(0xFF1A4F1D)
-val md_theme_dark_onPrimaryContainer = Color(0xFFC8E6C9)
+val md_theme_dark_primaryContainer = Color(0xFF4A0088)
+val md_theme_dark_onPrimaryContainer = Color(0xFFEDD9FF)
 
-val md_theme_dark_secondary = DelcomYellow
-val md_theme_dark_onSecondary = Color(0xFF2A1F00)
+val md_theme_dark_secondary = ZodiacStarBlue
+val md_theme_dark_onSecondary = Color(0xFF00204A)
 
-val md_theme_dark_secondaryContainer = Color(0xFF5A4600)
-val md_theme_dark_onSecondaryContainer = DelcomYellowSoft
+val md_theme_dark_secondaryContainer = Color(0xFF1A3060)
+val md_theme_dark_onSecondaryContainer = Color(0xFFD0D8FF)
 
-val md_theme_dark_tertiary = PlantAccent
-val md_theme_dark_onTertiary = Color.Black
+val md_theme_dark_tertiary = ZodiacGold
+val md_theme_dark_onTertiary = Color(0xFF3A2900)
 
 val md_theme_dark_error = Color(0xFFFFB4AB)
 val md_theme_dark_onError = Color(0xFF690005)
 val md_theme_dark_errorContainer = Color(0xFF93000A)
 val md_theme_dark_onErrorContainer = Color(0xFFFFDAD6)
 
-val md_theme_dark_background = Color(0xFF0E120E)
-val md_theme_dark_onBackground = Color(0xFFEAEAEA)
+val md_theme_dark_background = Color(0xFF0F0A1E)
+val md_theme_dark_onBackground = Color(0xFFEAE0FF)
 
-val md_theme_dark_surface = Color(0xFF121812)
-val md_theme_dark_onSurface = Color(0xFFEAEAEA)
+val md_theme_dark_surface = Color(0xFF160E2A)
+val md_theme_dark_onSurface = Color(0xFFEAE0FF)
 
-val md_theme_dark_surfaceVariant = Color(0xFF3A423A)
-val md_theme_dark_onSurfaceVariant = Color(0xFFC4C7C4)
+val md_theme_dark_surfaceVariant = Color(0xFF2E2748)
+val md_theme_dark_onSurfaceVariant = Color(0xFFCBC4E0)
 
-val md_theme_dark_outline = Color(0xFF8E918E)
-val md_theme_dark_inverseOnSurface = Color(0xFF121212)
-val md_theme_dark_inverseSurface = Color(0xFFEAEAEA)
-val md_theme_dark_inversePrimary = PlantGreen
+val md_theme_dark_outline = Color(0xFF958EAD)
+val md_theme_dark_inverseOnSurface = Color(0xFF1A1225)
+val md_theme_dark_inverseSurface = Color(0xFFEAE0FF)
+val md_theme_dark_inversePrimary = ZodiacPurple
 val md_theme_dark_shadow = Color.Black
-val md_theme_dark_surfaceTint = PlantGreenLight
+val md_theme_dark_surfaceTint = ZodiacPurpleLight

@@ -9,10 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +23,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,6 +39,8 @@ import org.delcom.pam_p3_ifs23050.ui.components.BottomNavComponent
 import org.delcom.pam_p3_ifs23050.ui.components.LoadingUI
 import org.delcom.pam_p3_ifs23050.ui.components.TopAppBarComponent
 import org.delcom.pam_p3_ifs23050.ui.theme.DelcomTheme
+import org.delcom.pam_p3_ifs23050.ui.theme.ZodiacDeepBlue
+import org.delcom.pam_p3_ifs23050.ui.theme.ZodiacPurple
 
 @Composable
 fun ZodiacDetailScreen(
@@ -74,59 +78,66 @@ fun ZodiacDetailUI(zodiac: ZodiacData) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        // Gambar & Nama
-        Column(
+        // Hero header dengan gradient biru-ungu
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(ZodiacDeepBlue, ZodiacPurple)
+                    )
+                )
+                .padding(vertical = 24.dp, horizontal = 16.dp),
+            contentAlignment = Alignment.Center
         ) {
-            Image(
-                painter = painterResource(id = zodiac.gambar),
-                contentDescription = zodiac.nama,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(220.dp),
-                contentScale = ContentScale.Fit
-            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Image(
+                    painter = painterResource(id = zodiac.gambar),
+                    contentDescription = zodiac.nama,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
+                    contentScale = ContentScale.Fit
+                )
 
-            Text(
-                text = zodiac.nama,
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
+                Text(
+                    text = zodiac.nama,
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                )
 
-            Text(
-                text = zodiac.periode,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
+                Text(
+                    text = zodiac.periode,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White.copy(alpha = 0.85f),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
 
-            Text(
-                text = zodiac.elemen,
-                style = MaterialTheme.typography.titleMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 4.dp)
-            )
+                Text(
+                    text = zodiac.elemen,
+                    style = MaterialTheme.typography.titleMedium,
+                    textAlign = TextAlign.Center,
+                    color = Color(0xFFFFD700),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp)
+                )
+            }
         }
 
-        // Deskripsi
-        ZodiacInfoCard(title = "Deskripsi", content = zodiac.deskripsi)
-
-        // Sifat
-        ZodiacInfoCard(title = "Sifat & Karakter", content = zodiac.sifat)
-
-        // Kecocokan
-        ZodiacInfoCard(title = "Kecocokan Zodiak 💑", content = zodiac.kecocokan)
+        Column(modifier = Modifier.padding(16.dp)) {
+            ZodiacInfoCard(title = "✨ Deskripsi", content = zodiac.deskripsi)
+            ZodiacInfoCard(title = "🌟 Sifat & Karakter", content = zodiac.sifat)
+            ZodiacInfoCard(title = "💑 Kecocokan Zodiak", content = zodiac.kecocokan)
+        }
     }
 }
 
@@ -136,29 +147,39 @@ fun ZodiacInfoCard(title: String, content: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp),
-        shape = MaterialTheme.shapes.medium,
-        elevation = CardDefaults.cardElevation(4.dp),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(6.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.SemiBold
-            )
-            HorizontalDivider(
+        Column(modifier = Modifier.fillMaxWidth()) {
+            // Header card dengan gradient
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 4.dp)
-            )
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(
+                                ZodiacDeepBlue.copy(alpha = 0.9f),
+                                ZodiacPurple.copy(alpha = 0.9f)
+                            )
+                        ),
+                        shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                    )
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+            }
+
             Text(
                 text = content,
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(16.dp),
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }

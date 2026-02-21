@@ -90,13 +90,13 @@ fun ProfileUI(){
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Abdullah Ubaid",
+                    text = "Zefanya Ecklezia Saragih",
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "ifs18005",
+                    text = "ifs23050",
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -122,7 +122,7 @@ fun ProfileUI(){
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    "Saya adalah seorang developer yang tertarik pada mobile development, backend API, dan berbagai teknologi pengembangan aplikasi. Senang belajar hal baru dan membangun aplikasi yang berguna.",
+                    "Saya adalah seorang developer yang memiliki minat utama pada web development, mobile development, serta UI/UX design. Saya antusias mempelajari teknologi dan tren terbaru, serta menikmati proses merancang dan membangun aplikasi yang tidak hanya fungsional, tetapi juga memiliki tampilan dan pengalaman pengguna yang baik.",
                     fontSize = 15.sp
                 )
             }

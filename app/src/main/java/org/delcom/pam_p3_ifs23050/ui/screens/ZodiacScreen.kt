@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +28,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +45,8 @@ import org.delcom.pam_p3_ifs23050.helper.RouteHelper
 import org.delcom.pam_p3_ifs23050.ui.components.BottomNavComponent
 import org.delcom.pam_p3_ifs23050.ui.components.TopAppBarComponent
 import org.delcom.pam_p3_ifs23050.ui.theme.DelcomTheme
+import org.delcom.pam_p3_ifs23050.ui.theme.ZodiacDeepBlue
+import org.delcom.pam_p3_ifs23050.ui.theme.ZodiacPurple
 
 @Composable
 fun ZodiacScreen(
@@ -51,10 +56,7 @@ fun ZodiacScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     fun onOpen(zodiacName: String) {
-        RouteHelper.to(
-            navController = navController,
-            destination = "zodiac/${zodiacName}"
-        )
+        RouteHelper.to(navController = navController, destination = "zodiac/${zodiacName}")
     }
 
     Column(
@@ -87,34 +89,39 @@ fun ZodiacUI(
     zodiacs: List<ZodiacData>,
     onOpen: (String) -> Unit
 ) {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(zodiacs) { zodiac ->
-            ZodiacItemUI(zodiac, onOpen)
-        }
-    }
-
     if (zodiacs.isEmpty()) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            shape = MaterialTheme.shapes.medium,
-            elevation = CardDefaults.cardElevation(4.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "Zodiak tidak ditemukan!",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
+            Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
-            )
+                    .padding(24.dp),
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.cardElevation(4.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Text(
+                    text = "🔭 Zodiak tidak ditemukan!",
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp)
+                )
+            }
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(zodiacs) { zodiac ->
+                ZodiacItemUI(zodiac, onOpen)
+            }
         }
     }
 }
@@ -127,60 +134,77 @@ fun ZodiacItemUI(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(vertical = 6.dp)
             .clickable { onOpen(zodiac.nama) },
-        shape = MaterialTheme.shapes.medium,
-        elevation = CardDefaults.cardElevation(4.dp),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(5.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = zodiac.gambar),
-                contentDescription = zodiac.nama,
+            // Sisi kiri dengan gradient
+            Box(
                 modifier = Modifier
-                    .size(70.dp)
-                    .clip(MaterialTheme.shapes.medium),
-                contentScale = ContentScale.Crop
-            )
+                    .width(80.dp)
+                    .height(100.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(ZodiacDeepBlue, ZodiacPurple)
+                        ),
+                        shape = RoundedCornerShape(topStart = 16.dp, bottomStart = 16.dp)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = zodiac.gambar),
+                    contentDescription = zodiac.nama,
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(12.dp)),
+                    contentScale = ContentScale.Fit
+                )
+            }
 
-            Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.width(14.dp))
 
-            Column(modifier = Modifier.weight(1f)) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(vertical = 12.dp, horizontal = 4.dp)
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = zodiac.nama,
                         style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = zodiac.elemen,
-                        fontSize = 14.sp
-                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(text = zodiac.elemen, fontSize = 14.sp)
                 }
-
-                Spacer(modifier = Modifier.height(2.dp))
 
                 Text(
                     text = zodiac.periode,
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(top = 2.dp)
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = zodiac.deskripsi,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
                     maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+
+            Spacer(modifier = Modifier.width(12.dp))
         }
     }
 }
@@ -189,9 +213,6 @@ fun ZodiacItemUI(
 @Composable
 fun PreviewZodiacUI() {
     DelcomTheme {
-        ZodiacUI(
-            zodiacs = DummyData.getZodiacData(),
-            onOpen = {}
-        )
+        ZodiacUI(zodiacs = DummyData.getZodiacData(), onOpen = {})
     }
 }
